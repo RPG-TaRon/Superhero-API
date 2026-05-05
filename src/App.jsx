@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 import "./App.css";
 
 function App() {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchHeroes() {
@@ -25,6 +27,10 @@ function App() {
     fetchHeroes();
   }, []);
 
+  const filteredHeroes = heroes.filter((hero) =>
+    hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <Navbar />
@@ -32,10 +38,15 @@ function App() {
       <main className="app">
         <h1>Superhero Battle Arena</h1>
 
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
+
         {loading ? (
           <p>Loading heroes...</p>
         ) : (
-          <p>{heroes.length} heroes loaded and ready for battle.</p>
+          <p>{filteredHeroes.length} heroes found.</p>
         )}
       </main>
     </>
