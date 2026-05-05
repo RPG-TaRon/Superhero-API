@@ -9,6 +9,7 @@ function App() {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [visibleCount, setVisibleCount] = useState(20);
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
 
@@ -35,6 +36,8 @@ function App() {
     hero.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const visibleHeroes = filteredHeroes.slice(0, visibleCount);
+
   function handleSelectHero(hero) {
     if (!fighterOne) {
       setFighterOne(hero);
@@ -46,12 +49,21 @@ function App() {
     }
   }
 
+  function handleLoadMore() {
+    setVisibleCount(visibleCount + 20);
+  }
+
   return (
     <>
       <Navbar />
 
       <main className="app">
-        <h1>Superhero Battle Arena</h1>
+        <h1>Multiverse Archive</h1>
+
+        <p className="intro-text">
+          Browse characters, view their details, and send your favorites into
+          the Battle Arena.
+        </p>
 
         <section className="battle-section">
           <BattleCard
@@ -70,14 +82,21 @@ function App() {
         <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
         {loading ? (
-          <p>Loading heroes...</p>
+          <p>Loading characters...</p>
         ) : (
           <>
-            <p>{filteredHeroes.length} heroes found.</p>
-            <HeroList
-              heroes={filteredHeroes.slice(0, 20)}
-              onSelectHero={handleSelectHero}
-            />
+            <p>
+              Showing {visibleHeroes.length} of {filteredHeroes.length}{" "}
+              characters.
+            </p>
+
+            <HeroList heroes={visibleHeroes} onSelectHero={handleSelectHero} />
+
+            {visibleCount < filteredHeroes.length && (
+              <button className="load-more-btn" onClick={handleLoadMore}>
+                Load More
+              </button>
+            )}
           </>
         )}
       </main>
