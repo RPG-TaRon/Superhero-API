@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
+import HeroList from "./components/HeroList";
 import "./App.css";
 
 function App() {
@@ -38,15 +39,15 @@ function App() {
       <main className="app">
         <h1>Superhero Battle Arena</h1>
 
-        <SearchBar
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        />
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
         {loading ? (
           <p>Loading heroes...</p>
         ) : (
-          <p>{filteredHeroes.length} heroes found.</p>
+          <>
+            <p>{filteredHeroes.length} heroes found.</p>
+            <HeroList heroes={filteredHeroes.slice(0, 20)} />
+          </>
         )}
       </main>
     </>
