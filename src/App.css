@@ -84,6 +84,86 @@ p {
   color: #a8a8a8;
 }
 
+.hero-details {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #171a2e;
+  border: 2px solid #ffd166;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.close-details-btn {
+  display: block;
+  margin-left: auto;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #ef476f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero-details-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.hero-details-layout img {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.hero-details-info h2 {
+  margin: 0;
+  font-size: 36px;
+  color: #ffd166;
+}
+
+.real-name {
+  margin-top: 8px;
+  color: #cfd2ff;
+}
+
+.add-battle-btn {
+  margin: 16px 0 24px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  background: #06d6a0;
+  color: #10121f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.details-grid div {
+  padding: 18px;
+  background: #10121f;
+  border-radius: 14px;
+}
+
+.details-grid h3 {
+  margin-top: 0;
+  color: #ffd166;
+}
+
+.details-grid p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .battle-section {
   display: grid;
   grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -217,4 +297,18 @@ p {
 .load-more-btn:hover {
   transform: scale(1.05);
   background: #ffe08a;
+}
+
+@media (max-width: 800px) {
+  .hero-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-section {
+    grid-template-columns: 1fr;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
 }
