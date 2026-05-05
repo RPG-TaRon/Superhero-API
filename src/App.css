@@ -76,6 +76,65 @@ p {
   color: #a8a8a8;
 }
 
+.battle-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+.battle-card {
+  min-height: 460px;
+  padding: 20px;
+  background: #171a2e;
+  border: 2px solid #ffd166;
+  border-radius: 16px;
+}
+
+.battle-card img {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.battle-card h2 {
+  color: #ffd166;
+}
+
+.battle-card h3 {
+  margin-bottom: 12px;
+}
+
+.stats-list {
+  max-width: 260px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.stats-list p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #e6e6e6;
+}
+
+.empty-slot {
+  margin-top: 120px;
+  color: #aaa;
+}
+
+.clear-btn {
+  margin-top: 16px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #ef476f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -85,11 +144,14 @@ p {
 
 .hero-card {
   background: #171a2e;
+  color: white;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid transparent;
   transition: transform 0.2s ease, border 0.2s ease;
   cursor: pointer;
+  padding: 0;
+  font-family: inherit;
 }
 
 .hero-card:hover {
