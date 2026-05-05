@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import HeroList from "./components/HeroList";
-import BattleCard from "./components/BattleCard";
 import HeroDetails from "./components/HeroDetails";
 import "./App.css";
 
@@ -12,8 +11,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(20);
   const [selectedHero, setSelectedHero] = useState(null);
-  const [fighterOne, setFighterOne] = useState(null);
-  const [fighterTwo, setFighterTwo] = useState(null);
 
   useEffect(() => {
     async function fetchHeroes() {
@@ -44,17 +41,6 @@ function App() {
     setSelectedHero(hero);
   }
 
-  function handleAddToBattle(hero) {
-    if (!fighterOne) {
-      setFighterOne(hero);
-    } else if (!fighterTwo) {
-      setFighterTwo(hero);
-    } else {
-      setFighterOne(hero);
-      setFighterTwo(null);
-    }
-  }
-
   function handleLoadMore() {
     setVisibleCount(visibleCount + 20);
   }
@@ -67,29 +53,13 @@ function App() {
         <h1>Multiverse Archive</h1>
 
         <p className="intro-text">
-          Browse characters, inspect their records, and send your favorites into
-          the Battle Arena.
+          Browse characters, inspect their records, and explore the multiverse.
         </p>
 
         <HeroDetails
           hero={selectedHero}
           onClose={() => setSelectedHero(null)}
-          onAddToBattle={handleAddToBattle}
         />
-
-        <section className="battle-section">
-          <BattleCard
-            label="Fighter 1"
-            hero={fighterOne}
-            onClear={() => setFighterOne(null)}
-          />
-
-          <BattleCard
-            label="Fighter 2"
-            hero={fighterTwo}
-            onClear={() => setFighterTwo(null)}
-          />
-        </section>
 
         <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
