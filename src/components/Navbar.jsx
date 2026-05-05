@@ -1,11 +1,15 @@
-import React from 'react';
-
-const Navbar = () => {
+function Navbar() {
   return (
-    <nav>
-      <h1>Superhero App</h1>
+    <nav className="navbar">
+      <h2 className="logo">Hero Clash</h2>
+
+      <div className="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Battle</a>
+        <a href="#">Favorites</a>
+      </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
