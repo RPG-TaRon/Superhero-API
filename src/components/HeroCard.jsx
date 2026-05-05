@@ -1,12 +1,13 @@
-import React from 'react';
-
-const HeroCard = ({ hero }) => {
+function HeroCard({ hero }) {
   return (
     <div className="hero-card">
+      <img src={hero.images.sm} alt={hero.name} />
+
       <h3>{hero.name}</h3>
-      <p>{hero.power}</p>
+
+      <p>{hero.biography.fullName || "Unknown Identity"}</p>
     </div>
   );
-};
+}
 
 export default HeroCard;
