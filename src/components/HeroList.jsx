@@ -1,14 +1,13 @@
-import React from 'react';
-import HeroCard from './HeroCard';
+import HeroCard from "./HeroCard";
 
-const HeroList = ({ heroes }) => {
+function HeroList({ heroes }) {
   return (
-    <div className="hero-list">
-      {heroes.map(hero => (
+    <section className="hero-grid">
+      {heroes.map((hero) => (
         <HeroCard key={hero.id} hero={hero} />
       ))}
-    </div>
+    </section>
   );
-};
+}
 
 export default HeroList;
