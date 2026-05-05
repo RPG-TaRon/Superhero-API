@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
 import "./App.css";
 
 function App() {
@@ -25,15 +26,19 @@ function App() {
   }, []);
 
   return (
-    <main className="app">
-      <h1>Superhero Battle Arena</h1>
+    <>
+      <Navbar />
 
-      {loading ? (
-        <p>Loading heroes...</p>
-      ) : (
-        <p>{heroes.length} heroes loaded and ready for battle.</p>
-      )}
-    </main>
+      <main className="app">
+        <h1>Superhero Battle Arena</h1>
+
+        {loading ? (
+          <p>Loading heroes...</p>
+        ) : (
+          <p>{heroes.length} heroes loaded and ready for battle.</p>
+        )}
+      </main>
+    </>
   );
 }
 
