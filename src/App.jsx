@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import HeroList from "./components/HeroList";
 import BattleCard from "./components/BattleCard";
+import HeroDetails from "./components/HeroDetails";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(20);
+  const [selectedHero, setSelectedHero] = useState(null);
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
 
@@ -39,6 +41,10 @@ function App() {
   const visibleHeroes = filteredHeroes.slice(0, visibleCount);
 
   function handleSelectHero(hero) {
+    setSelectedHero(hero);
+  }
+
+  function handleAddToBattle(hero) {
     if (!fighterOne) {
       setFighterOne(hero);
     } else if (!fighterTwo) {
@@ -61,9 +67,15 @@ function App() {
         <h1>Multiverse Archive</h1>
 
         <p className="intro-text">
-          Browse characters, view their details, and send your favorites into
+          Browse characters, inspect their records, and send your favorites into
           the Battle Arena.
         </p>
+
+        <HeroDetails
+          hero={selectedHero}
+          onClose={() => setSelectedHero(null)}
+          onAddToBattle={handleAddToBattle}
+        />
 
         <section className="battle-section">
           <BattleCard
