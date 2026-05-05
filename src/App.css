@@ -1,3 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #10121f;
+  color: white;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  color: #ffd166;
+}
+
+p {
+  font-size: 18px;
+  color: #d6d6d6;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -46,4 +74,42 @@
 
 .search-section input::placeholder {
   color: #a8a8a8;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.hero-card {
+  background: #171a2e;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border 0.2s ease;
+  cursor: pointer;
+}
+
+.hero-card:hover {
+  transform: scale(1.05);
+  border: 2px solid #ffd166;
+}
+
+.hero-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hero-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.hero-card p {
+  font-size: 14px;
+  color: #aaa;
+  padding: 0 10px 10px;
 }
