@@ -51,7 +51,11 @@ function Home() {
         Browse characters, inspect their records, and explore the multiverse.
       </p>
 
-      <HeroDetails hero={selectedHero} onClose={() => setSelectedHero(null)} />
+      <HeroDetails 
+        hero={selectedHero} 
+        onClose={() => setSelectedHero(null)}
+        onAddToBattle={() => setSelectedHero(null)}
+      />
 
       <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 

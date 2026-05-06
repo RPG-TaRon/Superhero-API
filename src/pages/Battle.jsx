@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BattleCard from "../components/BattleCard";
 import BattleResult from "../components/BattleResult";
-import calculateWinner from "../utils/calculateWinner";
+import { calculateWinner } from "../utils/calculateWinner";
 
 function Battle() {
   const [fighterOne, setFighterOne] = useState(null);
