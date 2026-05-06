@@ -22,6 +22,10 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
           onClear={() => setFighterOne(null)}
         />
 
+        <div className="vs-divider">
+          <span>VS</span>
+        </div>
+
         <BattleCard
           label="Fighter 2"
           hero={fighterTwo}
