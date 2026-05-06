@@ -381,6 +381,63 @@ p {
   }
 }
 
+.battle-section.clash .battle-card:first-child {
+  animation: clashLeft 1s ease forwards;
+}
+
+.battle-section.clash .battle-card:last-child {
+  animation: clashRight 1s ease forwards;
+}
+
+.battle-section.result {
+  grid-template-columns: minmax(260px, 420px);
+  justify-content: center;
+}
+
+.battle-section.result .battle-card {
+  animation: winnerReveal 0.5s ease forwards;
+}
+
+@keyframes clashLeft {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  60% {
+    transform: translateX(110px) scale(1.05);
+  }
+
+  100% {
+    transform: translateX(90px) scale(0.98);
+  }
+}
+
+@keyframes clashRight {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  60% {
+    transform: translateX(-110px) scale(1.05);
+  }
+
+  100% {
+    transform: translateX(-90px) scale(0.98);
+  }
+}
+
+@keyframes winnerReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .empty-slot {
   margin-top: 120px;
   color: #aaa;

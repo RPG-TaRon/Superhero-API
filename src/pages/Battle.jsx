@@ -26,19 +26,19 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
 
     setTimeout(() => {
       setBattleStage("set");
-    }, 900);
+    }, 1200);
 
     setTimeout(() => {
       setBattleStage("fight");
-    }, 1800);
+    }, 2500);
 
     setTimeout(() => {
       setBattleStage("clash");
-    }, 2600);
+    }, 3000);
 
     setTimeout(() => {
       setBattleStage("result");
-    }, 3600);
+    }, 4100);
   }
 
   function handleResetBattle() {
