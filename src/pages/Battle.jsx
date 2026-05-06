@@ -4,6 +4,7 @@ import { calculateWinner } from "../utils/calculateWinner";
 import { useNavigate } from "react-router-dom";
 
 function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
+  const [fightStarted, setFightStarted] = useState(false);
   const navigate = useNavigate();
 
   const battleResult =
