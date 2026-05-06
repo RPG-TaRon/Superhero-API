@@ -1,6 +1,6 @@
 import BattleCard from "../components/BattleCard";
 import BattleResult from "../components/BattleResult";
-import calculateWinner from "../utils/calculateWinner";
+import { calculateWinner } from "../utils/calculateWinner";
 
 function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
   const battleResult =
