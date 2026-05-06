@@ -24,7 +24,7 @@ function App() {
 
   function handleAddToFavorites(hero) {
     const alreadyFavorited = favorites.some(
-      (favorite) => favorite.id === hero.id
+      (favorite) => favorite.id === hero.id,
     );
 
     if (alreadyFavorited) {
@@ -78,6 +78,7 @@ function App() {
               favorites={favorites}
               onRemoveFromFavorites={handleRemoveFromFavorites}
               onAddToBattle={handleAddToBattle}
+              onAddToFavorites={handleAddToFavorites}
             />
           }
         />

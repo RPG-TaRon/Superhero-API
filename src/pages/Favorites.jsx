@@ -2,8 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroDetails from "../components/HeroDetails";
 
-function Favorites({ favorites, onRemoveFromFavorites, onAddToBattle }) {
+function Favorites({
+  favorites,
+  onRemoveFromFavorites,
+  onAddToBattle,
+  onAddToFavorites,
+}) {
   const [selectedHero, setSelectedHero] = useState(null);
+
   const navigate = useNavigate();
 
   function handleSendToBattle(hero) {
@@ -23,7 +29,7 @@ function Favorites({ favorites, onRemoveFromFavorites, onAddToBattle }) {
         hero={selectedHero}
         onClose={() => setSelectedHero(null)}
         onAddToBattle={handleSendToBattle}
-        onAddToFavorites={() => {}}
+        onAddToFavorites={onAddToFavorites}
       />
 
       {favorites.length === 0 ? (
@@ -40,6 +46,7 @@ function Favorites({ favorites, onRemoveFromFavorites, onAddToBattle }) {
 
                 <div className="hero-card-content">
                   <h3>{hero.name}</h3>
+
                   <p>{hero.biography.fullName || "Unknown Identity"}</p>
 
                   <span className="hero-card-tag">
