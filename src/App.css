@@ -172,6 +172,26 @@ p {
   margin: 30px auto;
 }
 
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-divider span {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffd166;
+  color: #10121f;
+  font-size: 32px;
+  font-weight: bold;
+  box-shadow: 0 0 30px rgba(255, 209, 102, 0.45);
+}
+
 .battle-card {
   min-height: 460px;
   padding: 20px;
