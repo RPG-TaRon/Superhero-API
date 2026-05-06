@@ -311,6 +311,30 @@ p {
   transform: translateY(-6px);
 }
 
+.fight-btn {
+  margin: 10px auto 20px;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 999px;
+  background: #ef476f;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.fight-btn:hover {
+  transform: scale(1.06);
+  background: #ff6b8f;
+}
+
+.fight-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .empty-slot {
   margin-top: 120px;
   color: #aaa;
