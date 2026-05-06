@@ -361,6 +361,27 @@ p {
   background: #ffe08a;
 }
 
+.details-action-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 16px 0 24px;
+}
+
+.add-favorite-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  background: #ef476f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-favorite-btn:hover {
+  background: #ff6b8f;
+}
+
 @media (max-width: 800px) {
   .hero-details-layout {
     grid-template-columns: 1fr;
