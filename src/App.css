@@ -146,6 +146,55 @@ p {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+.favorite-message {
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: #06d6a0;
+  color: #10121f;
+  font-weight: bold;
+  animation: popIn 0.3s ease;
+}
+
+.favorite-card-wrapper {
+  background: #171a2e;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.favorite-card-wrapper .hero-card {
+  width: 100%;
+}
+
+.remove-favorite-btn {
+  width: calc(100% - 28px);
+  margin: 0 14px 14px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #ef476f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-favorite-btn:hover {
+  background: #ff6b8f;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .add-battle-btn:hover,
 .add-favorite-btn:hover {
   transform: scale(1.03);
