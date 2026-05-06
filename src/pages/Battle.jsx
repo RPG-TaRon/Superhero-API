@@ -44,7 +44,6 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
     setBattleStage("staging");
   }
 
-  const fightStarted = battleStage !== "staging";
   const showCountdown =
     battleStage === "ready" ||
     battleStage === "set" ||
