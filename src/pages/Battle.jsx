@@ -5,7 +5,7 @@ import BattleResult from "../components/BattleResult";
 import { calculateWinner } from "../utils/calculateWinner";
 
 function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
-  const [fightStarted, setFightStarted] = useState(false);
+  const [battleStage, setBattleStage] = useState("staging");
 
   const navigate = useNavigate();
 
@@ -13,20 +13,42 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
     fighterOne && fighterTwo ? calculateWinner(fighterOne, fighterTwo) : null;
 
   function handleFight() {
-    if (fighterOne && fighterTwo) {
-      setFightStarted(true);
-    }
+    if (!fighterOne || !fighterTwo) return;
+
+    setBattleStage("ready");
+
+    setTimeout(() => {
+      setBattleStage("set");
+    }, 900);
+
+    setTimeout(() => {
+      setBattleStage("fight");
+    }, 1800);
+
+    setTimeout(() => {
+      setBattleStage("result");
+    }, 2800);
+  }
+
+  function handleResetBattle() {
+    setBattleStage("staging");
   }
 
   function handleClearFighterOne() {
     setFighterOne(null);
-    setFightStarted(false);
+    setBattleStage("staging");
   }
 
   function handleClearFighterTwo() {
     setFighterTwo(null);
-    setFightStarted(false);
+    setBattleStage("staging");
   }
+
+  const fightStarted = battleStage !== "staging";
+  const showCountdown =
+    battleStage === "ready" ||
+    battleStage === "set" ||
+    battleStage === "fight";
 
   return (
     <main className="app">
@@ -46,7 +68,7 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
           label="Fighter 1"
           hero={fighterOne}
           onClear={handleClearFighterOne}
-          isWinner={fightStarted && battleResult?.id === fighterOne?.id}
+          isWinner={battleStage === "result" && battleResult?.id === fighterOne?.id}
         />
 
         <div className="vs-divider">
@@ -57,24 +79,42 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
           label="Fighter 2"
           hero={fighterTwo}
           onClear={handleClearFighterTwo}
-          isWinner={fightStarted && battleResult?.id === fighterTwo?.id}
+          isWinner={battleStage === "result" && battleResult?.id === fighterTwo?.id}
         />
       </section>
 
-      <button
-        className="fight-btn"
-        onClick={handleFight}
-        disabled={!fighterOne || !fighterTwo}
-      >
-        Fight
-      </button>
+      {showCountdown && (
+        <section className="countdown-display">
+          <h2>
+            {battleStage === "ready" && "READY..."}
+            {battleStage === "set" && "SET..."}
+            {battleStage === "fight" && "FIGHT!"}
+          </h2>
+        </section>
+      )}
 
-      {fightStarted && (
-        <BattleResult
-          fighterOne={fighterOne}
-          fighterTwo={fighterTwo}
-          battleResult={battleResult}
-        />
+      {battleStage === "staging" && (
+        <button
+          className="fight-btn"
+          onClick={handleFight}
+          disabled={!fighterOne || !fighterTwo}
+        >
+          Fight
+        </button>
+      )}
+
+      {battleStage === "result" && (
+        <>
+          <BattleResult
+            fighterOne={fighterOne}
+            fighterTwo={fighterTwo}
+            battleResult={battleResult}
+          />
+
+          <button className="reset-battle-btn" onClick={handleResetBattle}>
+            Reset Battle
+          </button>
+        </>
       )}
     </main>
   );
