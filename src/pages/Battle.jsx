@@ -1,11 +1,13 @@
 import BattleCard from "../components/BattleCard";
 import BattleResult from "../components/BattleResult";
 import { calculateWinner } from "../utils/calculateWinner";
+import { useNavigate } from "react-router-dom";
 
 function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
+  const navigate = useNavigate();
+
   const battleResult =
     fighterOne && fighterTwo ? calculateWinner(fighterOne, fighterTwo) : null;
-
   return (
     <main className="app">
       <h1>Battle Arena</h1>
@@ -14,6 +16,9 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
         Add two characters from the archive and let the powerstats decide the
         winner.
       </p>
+      <button className="add-character-btn" onClick={() => navigate("/")}>
+        Add Character
+      </button>
 
       <section className="battle-section">
         <BattleCard
