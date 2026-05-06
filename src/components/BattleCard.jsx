@@ -1,6 +1,6 @@
-function BattleCard({ label, hero, onClear }) {
+function BattleCard({ label, hero, onClear, isWinner }) {
   return (
-    <div className="battle-card">
+    <div className={`battle-card ${isWinner ? "winner-card" : ""}`}>
       <h2>{label}</h2>
 
       {hero ? (
