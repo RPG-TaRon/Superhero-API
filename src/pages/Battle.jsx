@@ -12,6 +12,13 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
   const battleResult =
     fighterOne && fighterTwo ? calculateWinner(fighterOne, fighterTwo) : null;
 
+  const showCountdown =
+    battleStage === "ready" ||
+    battleStage === "set" ||
+    battleStage === "fight";
+
+  const showOnlyWinner = battleStage === "result" && battleResult;
+
   function handleFight() {
     if (!fighterOne || !fighterTwo) return;
 
@@ -19,15 +26,19 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
 
     setTimeout(() => {
       setBattleStage("set");
-    }, 1500);
+    }, 900);
 
     setTimeout(() => {
       setBattleStage("fight");
-    }, 3000);
+    }, 1800);
+
+    setTimeout(() => {
+      setBattleStage("clash");
+    }, 2600);
 
     setTimeout(() => {
       setBattleStage("result");
-    }, 4500);
+    }, 3600);
   }
 
   function handleResetBattle() {
@@ -44,11 +55,6 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
     setBattleStage("staging");
   }
 
-  const showCountdown =
-    battleStage === "ready" ||
-    battleStage === "set" ||
-    battleStage === "fight";
-
   return (
     <main className="app">
       <h1>Battle Arena</h1>
@@ -62,24 +68,34 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
         Add Character
       </button>
 
-      <section className="battle-section">
-        <BattleCard
-          label="Fighter 1"
-          hero={fighterOne}
-          onClear={handleClearFighterOne}
-          isWinner={battleStage === "result" && battleResult?.id === fighterOne?.id}
-        />
+      <section className={`battle-section ${battleStage}`}>
+        {(!showOnlyWinner || battleResult?.id === fighterOne?.id) && (
+          <BattleCard
+            label="Fighter 1"
+            hero={fighterOne}
+            onClear={handleClearFighterOne}
+            isWinner={
+              battleStage === "result" && battleResult?.id === fighterOne?.id
+            }
+          />
+        )}
 
-        <div className="vs-divider">
-          <span>VS</span>
-        </div>
+        {!showOnlyWinner && (
+          <div className="vs-divider">
+            <span>VS</span>
+          </div>
+        )}
 
-        <BattleCard
-          label="Fighter 2"
-          hero={fighterTwo}
-          onClear={handleClearFighterTwo}
-          isWinner={battleStage === "result" && battleResult?.id === fighterTwo?.id}
-        />
+        {(!showOnlyWinner || battleResult?.id === fighterTwo?.id) && (
+          <BattleCard
+            label="Fighter 2"
+            hero={fighterTwo}
+            onClear={handleClearFighterTwo}
+            isWinner={
+              battleStage === "result" && battleResult?.id === fighterTwo?.id
+            }
+          />
+        )}
       </section>
 
       {showCountdown && (
