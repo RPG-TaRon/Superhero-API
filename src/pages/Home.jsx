@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import HeroList from "../components/HeroList";
 import HeroDetails from "../components/HeroDetails";
 
-function Home() {
+function Home({ onAddToBattle }) {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(20);
   const [selectedHero, setSelectedHero] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchHeroes() {
@@ -39,6 +42,11 @@ function Home() {
     setSelectedHero(hero);
   }
 
+  function handleSendToBattle(hero) {
+    onAddToBattle(hero);
+    navigate("/battle");
+  }
+
   function handleLoadMore() {
     setVisibleCount(visibleCount + 20);
   }
@@ -48,13 +56,14 @@ function Home() {
       <h1>Multiverse Archive</h1>
 
       <p className="intro-text">
-        Browse characters, inspect their records, and explore the multiverse.
+        Browse characters, inspect their records, and send your favorites into
+        the Battle Arena.
       </p>
 
-      <HeroDetails 
-        hero={selectedHero} 
+      <HeroDetails
+        hero={selectedHero}
         onClose={() => setSelectedHero(null)}
-        onAddToBattle={() => setSelectedHero(null)}
+        onAddToBattle={handleSendToBattle}
       />
 
       <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
