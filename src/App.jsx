@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Battle from "./pages/Battle";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [fighterOne, setFighterOne] = useState(null);
@@ -57,6 +58,7 @@ function App() {
           }
         />
       </Routes>
+      <Route path="/favorites" element={<Favorites favorites={favorites} />} />
     </>
   );
 }
