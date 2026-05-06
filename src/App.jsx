@@ -21,14 +21,14 @@ function App() {
   }
 
   function handleAddToFavorites(hero) {
-  const alreadyFavorited = favorites.some(
-    (favorite) => favorite.id === hero.id
-  );
+    const alreadyFavorited = favorites.some(
+      (favorite) => favorite.id === hero.id,
+    );
 
-  if (!alreadyFavorited) {
-    setFavorites([...favorites, hero]);
+    if (!alreadyFavorited) {
+      setFavorites([...favorites, hero]);
+    }
   }
-}
 
   return (
     <>
@@ -37,7 +37,12 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home onAddToBattle={handleAddToBattle} />}
+          element={
+            <Home
+              onAddToBattle={handleAddToBattle}
+              onAddToFavorites={handleAddToFavorites}
+            />
+          }
         />
 
         <Route
