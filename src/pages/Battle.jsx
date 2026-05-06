@@ -3,29 +3,20 @@ import BattleCard from "../components/BattleCard";
 import BattleResult from "../components/BattleResult";
 import calculateWinner from "../utils/calculateWinner";
 
-function Battle({ selectedHeroes, onClearFighters }) {
+function Battle() {
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
 
-  function handleAddFighter(hero) {
-    if (!fighterOne) {
-      setFighterOne(hero);
-    } else if (!fighterTwo) {
-      setFighterTwo(hero);
-    } else {
-      setFighterOne(hero);
-      setFighterTwo(null);
-    }
-  }
-
   const battleResult =
-    fighterOne && fighterTwo
-      ? calculateWinner(fighterOne, fighterTwo)
-      : null;
+    fighterOne && fighterTwo ? calculateWinner(fighterOne, fighterTwo) : null;
 
   return (
     <main className="app">
       <h1>Battle Arena</h1>
+
+      <p className="intro-text">
+        Choose two fighters from the archive and compare their powerstats.
+      </p>
 
       <section className="battle-section">
         <BattleCard
@@ -43,9 +34,9 @@ function Battle({ selectedHeroes, onClearFighters }) {
 
       <BattleResult battleResult={battleResult} />
 
-      <div className="battle-instructions">
-        <p>Select heroes from the archive to send them into battle.</p>
-      </div>
+      <p className="intro-text">
+        We will connect this page to the archive picks in the next step.
+      </p>
     </main>
   );
 }
