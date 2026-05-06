@@ -201,6 +201,22 @@ p {
   text-align: left;
 }
 
+.battle-result {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #171a2e;
+  border: 2px solid #06d6a0;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(6, 214, 160, 0.2);
+}
+
+.battle-result h2 {
+  margin: 0;
+  font-size: 32px;
+  color: #06d6a0;
+}
+
 .stats-list p {
   margin: 6px 0;
   font-size: 15px;
