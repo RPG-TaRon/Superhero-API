@@ -20,6 +20,7 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
           label="Fighter 1"
           hero={fighterOne}
           onClear={() => setFighterOne(null)}
+          isWinner={battleResult?.id === fighterOne?.id}
         />
 
         <div className="vs-divider">
@@ -30,6 +31,7 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
           label="Fighter 2"
           hero={fighterTwo}
           onClear={() => setFighterTwo(null)}
+          isWinner={battleResult?.id === fighterTwo?.id}
         />
       </section>
 
