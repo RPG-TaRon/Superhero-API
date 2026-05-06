@@ -57,8 +57,9 @@ function App() {
             />
           }
         />
+
+        <Route path="/favorites" element={<Favorites favorites={favorites} />} />
       </Routes>
-      <Route path="/favorites" element={<Favorites favorites={favorites} />} />
     </>
   );
 }
