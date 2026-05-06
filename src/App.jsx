@@ -9,6 +9,7 @@ function App() {
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [favoriteMessage, setFavoriteMessage] = useState("");
 
   function handleAddToBattle(hero) {
     if (!fighterOne) {
@@ -23,12 +24,23 @@ function App() {
 
   function handleAddToFavorites(hero) {
     const alreadyFavorited = favorites.some(
-      (favorite) => favorite.id === hero.id,
+      (favorite) => favorite.id === hero.id
     );
 
-    if (!alreadyFavorited) {
+    if (alreadyFavorited) {
+      setFavoriteMessage(`${hero.name} is already in Favorites`);
+    } else {
       setFavorites([...favorites, hero]);
+      setFavoriteMessage(`${hero.name} added to Favorites`);
     }
+
+    setTimeout(() => {
+      setFavoriteMessage("");
+    }, 2000);
+  }
+
+  function handleRemoveFromFavorites(heroId) {
+    setFavorites(favorites.filter((hero) => hero.id !== heroId));
   }
 
   return (
@@ -42,6 +54,7 @@ function App() {
             <Home
               onAddToBattle={handleAddToBattle}
               onAddToFavorites={handleAddToFavorites}
+              favoriteMessage={favoriteMessage}
             />
           }
         />
@@ -58,7 +71,16 @@ function App() {
           }
         />
 
-        <Route path="/favorites" element={<Favorites favorites={favorites} />} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              favorites={favorites}
+              onRemoveFromFavorites={handleRemoveFromFavorites}
+              onAddToBattle={handleAddToBattle}
+            />
+          }
+        />
       </Routes>
     </>
   );
