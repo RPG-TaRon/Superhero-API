@@ -29,7 +29,11 @@ function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
         />
       </section>
 
-      <BattleResult battleResult={battleResult} />
+      <BattleResult
+        fighterOne={fighterOne}
+        fighterTwo={fighterTwo}
+        battleResult={battleResult}
+      />
     </main>
   );
 }
