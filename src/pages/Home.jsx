@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import HeroList from "../components/HeroList";
 import HeroDetails from "../components/HeroDetails";
 
-function Home({ onAddToBattle }) {
+function Home({ onAddToBattle, onAddToFavorites }) {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,7 +17,7 @@ function Home({ onAddToBattle }) {
     async function fetchHeroes() {
       try {
         const response = await fetch(
-          "https://akabab.github.io/superhero-api/api/all.json"
+          "https://akabab.github.io/superhero-api/api/all.json",
         );
 
         const data = await response.json();
@@ -33,7 +33,7 @@ function Home({ onAddToBattle }) {
   }, []);
 
   const filteredHeroes = heroes.filter((hero) =>
-    hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+    hero.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const visibleHeroes = filteredHeroes.slice(0, visibleCount);
@@ -64,6 +64,7 @@ function Home({ onAddToBattle }) {
         hero={selectedHero}
         onClose={() => setSelectedHero(null)}
         onAddToBattle={handleSendToBattle}
+        onAddToFavorites={onAddToFavorites}
       />
 
       <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
