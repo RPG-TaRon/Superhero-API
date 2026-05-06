@@ -7,6 +7,7 @@ import Battle from "./pages/Battle";
 function App() {
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
   function handleAddToBattle(hero) {
     if (!fighterOne) {
@@ -18,6 +19,16 @@ function App() {
       setFighterTwo(null);
     }
   }
+
+  function handleAddToFavorites(hero) {
+  const alreadyFavorited = favorites.some(
+    (favorite) => favorite.id === hero.id
+  );
+
+  if (!alreadyFavorited) {
+    setFavorites([...favorites, hero]);
+  }
+}
 
   return (
     <>
