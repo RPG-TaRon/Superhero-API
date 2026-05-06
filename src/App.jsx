@@ -36,7 +36,7 @@ function App() {
 
     setTimeout(() => {
       setFavoriteMessage("");
-    }, 2000);
+    }, 5000);
   }
 
   function handleRemoveFromFavorites(heroId) {
