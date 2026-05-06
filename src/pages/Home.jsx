@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import HeroList from "../components/HeroList";
 import HeroDetails from "../components/HeroDetails";
 
-function Home({ onAddToBattle, onAddToFavorites }) {
+function Home({ onAddToBattle, onAddToFavorites, favoriteMessage }) {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -59,6 +59,7 @@ function Home({ onAddToBattle, onAddToFavorites }) {
         Browse characters, inspect their records, and send your favorites into
         the Battle Arena.
       </p>
+      {favoriteMessage && <p className="favorite-message">{favoriteMessage}</p>}
 
       <HeroDetails
         hero={selectedHero}
