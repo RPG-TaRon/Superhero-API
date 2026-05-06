@@ -1,9 +1,12 @@
-function HeroDetails({ hero, onClose, onAddToBattle }) {
+function HeroDetails({ hero, onClose, onAddToBattle, onAddToFavorites }) {
   if (!hero) return null;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(event) => event.stopPropagation()}>
+      <div
+        className="modal-content"
+        onClick={(event) => event.stopPropagation()}
+      >
         <button className="close-details-btn" onClick={onClose}>
           Close
         </button>
@@ -18,9 +21,21 @@ function HeroDetails({ hero, onClose, onAddToBattle }) {
               {hero.biography.fullName || "Unknown Identity"}
             </p>
 
-            <button className="add-battle-btn" onClick={() => onAddToBattle(hero)}>
-              Add to Battle Arena
-            </button>
+            <div className="details-action-buttons">
+              <button
+                className="add-battle-btn"
+                onClick={() => onAddToBattle(hero)}
+              >
+                Add to Battle Arena
+              </button>
+
+              <button
+                className="add-favorite-btn"
+                onClick={() => onAddToFavorites(hero)}
+              >
+                Add to Favorites
+              </button>
+            </div>
 
             <div className="details-grid">
               <div>
@@ -36,7 +51,9 @@ function HeroDetails({ hero, onClose, onAddToBattle }) {
               <div>
                 <h3>Biography</h3>
                 <p>Aliases: {hero.biography.aliases.join(", ")}</p>
-                <p>Place of Birth: {hero.biography.placeOfBirth || "Unknown"}</p>
+                <p>
+                  Place of Birth: {hero.biography.placeOfBirth || "Unknown"}
+                </p>
                 <p>First Appearance: {hero.biography.firstAppearance}</p>
                 <p>Publisher: {hero.biography.publisher || "Unknown"}</p>
                 <p>Alignment: {hero.biography.alignment}</p>
