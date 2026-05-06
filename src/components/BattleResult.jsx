@@ -1,5 +1,5 @@
-function BattleResult({ battleResult }) {
-  if (!battleResult) {
+function BattleResult({ fighterOne, fighterTwo, battleResult }) {
+  if (!fighterOne || !fighterTwo) {
     return null;
   }
 
