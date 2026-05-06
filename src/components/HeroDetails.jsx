@@ -12,6 +12,7 @@ function HeroDetails({ hero, onClose, onAddToBattle }) {
 
         <div className="hero-details-info">
           <h2>{hero.name}</h2>
+
           <p className="real-name">
             {hero.biography.fullName || "Unknown Identity"}
           </p>
