@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroDetails from "../components/HeroDetails";
 
+// Favorites page displays saved heroes and allows quick re-use.
+// Users can move favorites to the battle arena or remove them from the list.
 function Favorites({
   favorites,
   onRemoveFromFavorites,

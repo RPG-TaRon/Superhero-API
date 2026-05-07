@@ -1,3 +1,5 @@
+// BattleCard displays one fighter's stats during the battle sequence.
+// It can also show a winner highlight when the match ends.
 function BattleCard({ label, hero, onClear, isWinner }) {
   return (
     <div className={`battle-card ${isWinner ? "winner-card" : ""}`}>

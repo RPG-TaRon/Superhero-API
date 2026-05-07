@@ -4,11 +4,15 @@ import BattleCard from "../components/BattleCard";
 import BattleResult from "../components/BattleResult";
 import { calculateWinner } from "../utils/calculateWinner";
 
+// Battle page manages the fight state and displays both selected fighters.
+// It also coordinates the fight countdown and result reveal.
 function Battle({ fighterOne, fighterTwo, setFighterOne, setFighterTwo }) {
   const [battleStage, setBattleStage] = useState("staging");
 
   const navigate = useNavigate();
 
+  // Calculate the winner based on powerstats.
+  // The battle result updates automatically when fighter selections change.
   const battleResult =
     fighterOne && fighterTwo ? calculateWinner(fighterOne, fighterTwo) : null;
 

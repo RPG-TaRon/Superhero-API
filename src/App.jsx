@@ -6,6 +6,8 @@ import Battle from "./pages/Battle";
 import Favorites from "./pages/Favorites";
 
 function App() {
+  // App state is the single source of truth for the whole app.
+  // Fighter slots, favorites, and notification messages are all managed here.
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
   const [favorites, setFavorites] = useState([]);

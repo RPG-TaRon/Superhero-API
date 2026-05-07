@@ -1,3 +1,5 @@
+// BattleResult shows the final outcome of the battle.
+// It only renders once both fighters are present and the match has completed.
 function BattleResult({ fighterOne, fighterTwo, battleResult }) {
   if (!fighterOne || !fighterTwo) {
     return null;

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+
+// Navbarshows links to Home, Battle Arena, and Favorites pages.
 function Navbar() {
   return (
     <nav className="navbar">

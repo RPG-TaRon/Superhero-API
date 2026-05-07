@@ -1,6 +1,9 @@
+// HeroDetails shows the selected hero's full profile inside a modal.
+// It also provides actions for battle selection or saving favorites.
 function HeroDetails({ hero, onClose, onAddToBattle, onAddToFavorites }) {
   if (!hero) return null;
 
+  // Hero details are shown in a modal so the user can stay on the same page.
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div

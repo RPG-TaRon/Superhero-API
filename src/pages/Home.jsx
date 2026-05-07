@@ -4,6 +4,8 @@ import SearchBar from "../components/SearchBar";
 import HeroList from "../components/HeroList";
 import HeroDetails from "../components/HeroDetails";
 
+// Home page is the main browse interface.
+// It loads hero data, supports search, and opens the hero detail modal.
 function Home({ onAddToBattle, onAddToFavorites, favoriteMessage }) {
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,6 +15,8 @@ function Home({ onAddToBattle, onAddToFavorites, favoriteMessage }) {
 
   const navigate = useNavigate();
 
+  // Load all heroes once when the page first renders.
+  // This simulates an archive fetch from the public API.
   useEffect(() => {
     async function fetchHeroes() {
       try {

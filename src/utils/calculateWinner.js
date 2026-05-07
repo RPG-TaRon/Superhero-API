@@ -1,3 +1,4 @@
+// calculateWinner compares the powerstats of two heroes and determines the winner.
 export function calculateWinner(hero1, hero2) {
   if (!hero1 || !hero2) {
     return null;

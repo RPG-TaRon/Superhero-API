@@ -1,3 +1,5 @@
+// HeroCard renders a clickable hero preview card.
+// Selecting a card opens the modal with full character details.
 function HeroCard({ hero, onSelectHero }) {
   return (
     <button className="hero-card" onClick={() => onSelectHero(hero)}>

@@ -1,3 +1,4 @@
+// Here lies the SearchBar component.
 function SearchBar({ searchTerm, onSearchChange }) {
   return (
     <section className="search-section">
