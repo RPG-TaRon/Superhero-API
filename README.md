@@ -162,7 +162,6 @@ I chose to centralize major application state inside `App.jsx` so fighter select
 - Sound effects and music
 - Character power scaling system
 - Tournament brackets
-- Dark/light anime themes
 - Local storage for saved favorites
 - Online multiplayer battles
 - Character comparison charts
