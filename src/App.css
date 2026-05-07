@@ -35,11 +35,15 @@ p {
 }
 
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 40px;
-  background: #171a2e;
+  background: rgba(23, 26, 46, 0.88);
+  backdrop-filter: blur(10px);
   border-bottom: 2px solid #ffd166;
 }
 
