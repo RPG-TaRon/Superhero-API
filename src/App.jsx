@@ -4,14 +4,23 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Battle from "./pages/Battle";
 import Favorites from "./pages/Favorites";
-
+// App is the root component that manages global state and routing.
+// It holds the current fighters, favorites list, and theme state.
 function App() {
-  // App state is the single source of truth for the whole app.
-  // Fighter slots, favorites, and notification messages are all managed here.
   const [fighterOne, setFighterOne] = useState(null);
   const [fighterTwo, setFighterTwo] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [favoriteMessage, setFavoriteMessage] = useState("");
+
+  const [theme, setTheme] = useState("hero");
+
+  function handleToggleTheme() {
+    if (theme === "hero") {
+      setTheme("villain");
+    } else {
+      setTheme("hero");
+    }
+  }
 
   function handleAddToBattle(hero) {
     if (!fighterOne) {
@@ -26,7 +35,7 @@ function App() {
 
   function handleAddToFavorites(hero) {
     const alreadyFavorited = favorites.some(
-      (favorite) => favorite.id === hero.id,
+      (favorite) => favorite.id === hero.id
     );
 
     if (alreadyFavorited) {
@@ -46,8 +55,8 @@ function App() {
   }
 
   return (
-    <>
-      <Navbar />
+    <div className={theme === "hero" ? "hero-theme" : "villain-theme"}>
+      <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
 
       <Routes>
         <Route
@@ -85,7 +94,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 }
 
